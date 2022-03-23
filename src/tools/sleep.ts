@@ -1,0 +1,1 @@
+export default function sleep(duration: number = 0) { return new Promise((resolve) => setTimeout(() => resolve(null), duration)); }
