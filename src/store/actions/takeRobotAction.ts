@@ -21,7 +21,7 @@ export default function takeRobotAction(store: StoreType, place: RobotPlaces) {
         if (!robotNotInPlace) {
             dispatchMoveAction({ store, selectedRobot, place, taskMiddleware, sleepFn });
         }
-        dispatchAddRobotAction({ store, selectedRobot, place, consume, produce, taskMiddleware, sleepFn });
+        dispatchAddRobotActionToQueue({ store, selectedRobot, place, consume, produce, taskMiddleware, sleepFn });
         runTask(selectedRobot.index);
     }
 }
@@ -34,7 +34,7 @@ export function isRobotAtTheRightPlace(selectedRobot: RobotWithIndex, place: Rob
     return isInTheRightPlace;
 }
 
-export function dispatchAddRobotAction({ store, selectedRobot, place, consume, produce, taskMiddleware, sleepFn = sleep }: { store: StoreType; selectedRobot: RobotWithIndex; place: RobotPlaces; consume: (economics: Economics) => void; produce: (economics: Economics) => void; taskMiddleware: (index: number, fn: () => Promise<void>) => () => Promise<void>; sleepFn?: (duration: number) => Promise<unknown>; }) {
+export function dispatchAddRobotActionToQueue({ store, selectedRobot, place, consume, produce, taskMiddleware, sleepFn = sleep }: { store: StoreType; selectedRobot: RobotWithIndex; place: RobotPlaces; consume: (economics: Economics) => void; produce: (economics: Economics) => void; taskMiddleware: (index: number, fn: () => Promise<void>) => () => Promise<void>; sleepFn?: (duration: number) => Promise<unknown>; }) {
 
     const actionType = placeToAction(place);
     const duration = fn(actionDurationRules[actionType].duration);
