@@ -37,9 +37,10 @@ Unit tests are performed, mostly on the store and reducer part.
 
 - Replace the emojis with actual graphics.
 - Show the selected robot.
+- Use the action `duration` property to display a loader.
 - Add animations on the robots (when idle, working or moving to on other station).
 - Replace the copper style with a texture.
-- Target a 100% code coverage.
+- More tests, mostly to check every game rules.
 - Show the cost of each action in a tooltip.
 - Rethink the UI to be responsive.
 - Some of the styled components can be shared.
@@ -53,3 +54,18 @@ Unit tests are performed, mostly on the store and reducer part.
     - Select robots from 1 - 20
     - Select next idle robot
 - Translate to many languages.
+- How-to page at the start of a game.
+
+## Timeline
+
+- (~15 minutes) Building the data types
+- (~40 minutes) Building the reducer
+- (~20 minutes) Testing the reducer
+- (~1 hour) Building the UI elements
+- (~20 minutes) Searching for texture ressources and using them
+- (~1 hour) Creating the business logic arround the store
+- (~30 minutes) Plugin the UI with the store and playing with the game to see if everything works
+- (~1 hour) Adding a few unit tests
+- (~15 minutes)Documenting
+
+*Total* : ~5h20
