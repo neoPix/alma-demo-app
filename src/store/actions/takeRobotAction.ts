@@ -16,12 +16,12 @@ export default function takeRobotAction(store: StoreType, place: RobotPlaces) {
     const consume = consumeEconomics(store);
     const produce = addEconomics(store);
 
-    return (selectedRobot: RobotWithIndex) => {
+    return (selectedRobot: RobotWithIndex, { sleepFn = sleep }: { sleepFn?: (duration: number) => Promise<unknown>; } = {}) => {
         const robotNotInPlace = isRobotAtTheRightPlace(selectedRobot, place);
         if (!robotNotInPlace) {
-            dispatchMoveAction({ store, selectedRobot, place, taskMiddleware });
+            dispatchMoveAction({ store, selectedRobot, place, taskMiddleware, sleepFn });
         }
-        dispatchAddRobotAction({ store, selectedRobot, place, consume, produce, taskMiddleware });
+        dispatchAddRobotAction({ store, selectedRobot, place, consume, produce, taskMiddleware, sleepFn });
         runTask(selectedRobot.index);
     }
 }

@@ -24,7 +24,7 @@ const Indicator = styled.div`
 `;
 
 export default function PathComponent() {
-    return (<MainPathDiv>
+    return (<MainPathDiv data-testid="path">
         <PathDiv>
             <Indicator><MovingIcon /></Indicator>
             <RobotList position={RobotPlaces.TRANSITIONNING} />

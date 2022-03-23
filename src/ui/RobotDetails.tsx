@@ -67,20 +67,20 @@ export default function RobotDetails() {
     const produceFooBar = () => takeRobotAction(store, RobotPlaces.FOOBAR_FACTORY)(selected);
     const produceRobot = () => takeRobotAction(store, RobotPlaces.ROBOT_FACTORY)(selected);
     const PositionComponent = getPositionIcon(selected.robot.position);
-    return (<RobotDetailPanel>
+    return (<RobotDetailPanel data-testid="selectedRobotDetailPanel">
         <PanelColumn>
-            <RobotInformation>Robot ID: <b>{ selected.index }</b></RobotInformation>
-            <RobotInformation>Is active: <b>{ Boolean(selected.robot.currentAction) ? 'Yes' : 'No' }</b></RobotInformation>
-            <RobotInformation>Nb actions in queue: <b>{ selected.robot.actionQueue.length }</b></RobotInformation>
-            <RobotInformation>Position: <PositionComponent /></RobotInformation>
+            <RobotInformation>Robot ID: <b data-testid="selectedRobotIndex">{ selected.index }</b></RobotInformation>
+            <RobotInformation>Is active: <b data-testid="selectedRobotWorking">{ Boolean(selected.robot.currentAction) ? 'Yes' : 'No' }</b></RobotInformation>
+            <RobotInformation>Nb actions in queue: <b data-testid="selectedRobotQueue">{ selected.robot.actionQueue.length }</b></RobotInformation>
+            <RobotInformation>Position: <span data-testid="selectedRobotPosition"><PositionComponent /></span></RobotInformation>
         </PanelColumn>
         <PanelColumn>
-            <RobotAction onClick={mineBar}>Mine Bar <BarIcon /></RobotAction>
+            <RobotAction onClick={mineBar} data-testid="mineBarAction">Mine Bar <BarIcon /></RobotAction>
             <RobotAction onClick={mineFoo}>Mine Foo <FooIcon /></RobotAction>
             <RobotAction onClick={produceFooBar}>Produce FooBar <FooBarIcon /></RobotAction>
             <RobotAction onClick={produceRobot}>Produce Robot <RobotIcon /></RobotAction>
         </PanelColumn>
-        <RobotActionsQueue>
+        <RobotActionsQueue data-testid="selectedRobotFullQueue">
           {selected.robot.currentAction ? <BotQueueItem action={selected.robot.currentAction} /> : <></> }
           { selected.robot.actionQueue.map((item, index) => (<BotQueueItem action={item} key={index} />)) }
         </RobotActionsQueue>

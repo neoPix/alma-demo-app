@@ -47,5 +47,5 @@ export default function RobotItem({ bot }: RobotItemProps) {
   };
 
   const Component = bot.robot.currentAction ? RobotItemActive : RobotItemIdle;
-  return (<Component onClick={robotClick}><RobotIcon /></Component>)
+  return (<Component data-testid={`robot-${bot.index}`} onClick={robotClick}><RobotIcon /></Component>)
 }

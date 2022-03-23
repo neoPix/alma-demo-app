@@ -19,7 +19,7 @@ const Indicator = styled.div`
 `;
 
 export default function FooMineComponent() {
-  return (<div>
+  return (<div data-testid="fooMine">
     <FooMineDiv>
       <Indicator><FooIcon /></Indicator>
     </FooMineDiv>

@@ -24,5 +24,5 @@ const RobotPositionListDiv = styled.div`
 
 export default function RobotList({ position = RobotPlaces.ROBOT_FACTORY }: RobotListProps) {
     const robots = useSelector<Store, RobotWithIndex[]>(store => store.robots.map((robot, index) => ({ index, robot })).filter(({ robot }) => robot.position === position));
-    return robots.length ? (<RobotPositionListDiv>{robots.map(bot => (<RobotItem bot={bot} key={bot.index} />))}</RobotPositionListDiv>) : (<></>);
+    return robots.length ? (<RobotPositionListDiv data-testid={`robotLits-${position}`}>{robots.map(bot => (<RobotItem bot={bot} key={bot.index} />))}</RobotPositionListDiv>) : (<></>);
 }

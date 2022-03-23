@@ -33,22 +33,20 @@ const storeInitializer = initStore(store);
 function App() {
   useEffect(storeInitializer, []);
   return (
-    <Provider store={store}>
-      <MainGameDiv>
-        <GameOver />
-        <Economics />
-        <Row>
-          <BarMine />
-          <FooMine />
-          <FooBarFactory />
-          <RobotFactory />
-        </Row>
-        <Row>
-          <Path />
-        </Row>
-        <RobotDetails />
-      </MainGameDiv>
-    </Provider>
+    <MainGameDiv>
+      <GameOver />
+      <Economics />
+      <Row>
+        <BarMine />
+        <FooMine />
+        <FooBarFactory />
+        <RobotFactory />
+      </Row>
+      <Row>
+        <Path />
+      </Row>
+      <RobotDetails />
+    </MainGameDiv>
   );
 }
 

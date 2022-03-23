@@ -19,7 +19,7 @@ const Indicator = styled.div`
 `;
 
 export default function BarMineComponent() {
-  return (<div>
+  return (<div data-testid="barMine">
     <FooMineDiv>
       <Indicator><BarIcon /></Indicator>
     </FooMineDiv>

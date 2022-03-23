@@ -19,7 +19,7 @@ const Indicator = styled.div`
 `;
 
 export default function RobotFactoryComponent() {
-  return (<div>
+  return (<div data-testid="robotFactory">
     <RobotFactoryDiv>
       <Indicator><RobotIcon /></Indicator>
     </RobotFactoryDiv>

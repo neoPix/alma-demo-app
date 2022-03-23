@@ -19,7 +19,7 @@ const Indicator = styled.div`
 `;
 
 export default function FooBarFactoryComponent() {
-  return (<div>
+  return (<div data-testid="fooBarFactory">
     <FooBarFactoryDiv>
       <Indicator><FooBarIcon /></Indicator>
     </FooBarFactoryDiv>
