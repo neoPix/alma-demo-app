@@ -17,7 +17,7 @@ const store = () => {
   return instance;
 };
 
-test('The app mounts and renders the basic visual components', () => {
+test('should mount the app and renders the basic visual components', () => {
   // The major elements are visible
   render(<Provider store={store()}><App /></Provider>);
   const barMine = screen.getByTestId('barMine');
@@ -32,7 +32,7 @@ test('The app mounts and renders the basic visual components', () => {
   expect(fooMine).toBeInTheDocument();
 });
 
-test('The app is in the initial state', () => {
+test('should render properly with the initial state', () => {
   // Two robots are present and the robot 0 is selected and is in the right position
   const testStore = store();
   render(<Provider store={testStore}><App /></Provider>);
@@ -50,7 +50,7 @@ test('The app is in the initial state', () => {
   expect(screen.getByTestId('selectedRobotPosition').textContent).toBe('🤖');
 });
 
-test('The robot queue lists the actions taken by the robot', async() => {
+test('should list the actions present of the queue of a robot', async() => {
   const testStore = store();
   takeRobotAction(testStore, RobotPlaces.BAR_MINE)({ index: 0, robot: testStore.getState().robots[0] });
   takeRobotAction(testStore, RobotPlaces.BAR_MINE)({ index: 0, robot: testStore.getState().robots[0] });

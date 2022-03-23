@@ -14,7 +14,10 @@ export default function runQueue(store: StoreType) {
             await sleep();
             try {
                 await fn();
-            } catch(e) {}
+            } catch(e) {
+                // TODO: manage error properly here
+                console.error(e);
+            }
             finally {
                 store.dispatch({ type: StoreActions.ROBOT_ACTION_PROCESSED, robotIndex: index });
                 runTask(index);
