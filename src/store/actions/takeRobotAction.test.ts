@@ -17,7 +17,7 @@ const store = () => {
     return instance;
 }
 
-test('should add two actions to the queue, one to move and the other to mine for Bar', () => {
+test('should add a move action when switching to an other production station', () => {
     const testStore = store();
     takeRobotAction(testStore, RobotPlaces.BAR_MINE)({ index: 0, robot: testStore.getState().robots[0] });
     expect(testStore.getState().robots[0].currentAction?.type).toBe(RobotPossibleAction.TRANSITIONNING);
@@ -32,7 +32,7 @@ test('should only add one extra action when not changing station', () => {
     expect(testStore.getState().robots[0].actionQueue.length).toBe(2);
 });
 
-test('should run the actions and unpile the queue', async () => {
+test('should unpile all the actions in the queue after a while', async () => {
     const testStore = store();
     takeRobotAction(testStore, RobotPlaces.BAR_MINE)({ index: 0, robot: testStore.getState().robots[0] }, { sleepFn: mockedSleep });
     await sleep(10);
@@ -49,7 +49,7 @@ test('should create a robot when at the robot factory', async () => {
     expect(testStore.getState().robots.length).toBe(3);
 });
 
-test('should apply the refund rules when building fails', async () => {
+test('should apply a refund when FooBar production fails', async () => {
     const testStore = store();
     testStore.dispatch({ type: StoreActions.MOVE_ROBOT, position: RobotPlaces.FOOBAR_FACTORY, robotIndex: 0 });
     addEconomics(testStore)(actionCostRules[RobotPossibleAction.FOOBAR].costs);

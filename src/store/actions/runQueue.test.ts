@@ -4,7 +4,6 @@ import { PossibleStoreActions, StoreActions } from '../interfaces/Actions';
 import { RobotPossibleAction } from '../interfaces/RobotAction';
 import Store from '../interfaces/Store';
 import FooBarReducer from '../reducer';
-import { StoreType } from '../store';
 import runQueue from './runQueue';
 
 const store = () => createStore<Store, PossibleStoreActions, unknown, unknown>(FooBarReducer);
